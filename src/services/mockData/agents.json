@@ -1,0 +1,110 @@
+[
+  {
+    "Id": 1,
+    "name": "Sarah Johnson",
+    "status": "online",
+    "currentCall": "CALL-2024-001",
+    "totalCalls": 45,
+    "avgHandleTime": 180,
+    "satisfaction": 95
+  },
+  {
+    "Id": 2,
+    "name": "Michael Chen",
+    "status": "busy",
+    "currentCall": "CALL-2024-002",
+    "totalCalls": 38,
+    "avgHandleTime": 205,
+    "satisfaction": 92
+  },
+  {
+    "Id": 3,
+    "name": "Emma Rodriguez",
+    "status": "online",
+    "currentCall": null,
+    "totalCalls": 52,
+    "avgHandleTime": 165,
+    "satisfaction": 98
+  },
+  {
+    "Id": 4,
+    "name": "David Williams",
+    "status": "away",
+    "currentCall": null,
+    "totalCalls": 41,
+    "avgHandleTime": 195,
+    "satisfaction": 88
+  },
+  {
+    "Id": 5,
+    "name": "Jessica Taylor",
+    "status": "online",
+    "currentCall": "CALL-2024-003",
+    "totalCalls": 47,
+    "avgHandleTime": 175,
+    "satisfaction": 94
+  },
+  {
+    "Id": 6,
+    "name": "James Brown",
+    "status": "busy",
+    "currentCall": "CALL-2024-004",
+    "totalCalls": 39,
+    "avgHandleTime": 210,
+    "satisfaction": 90
+  },
+  {
+    "Id": 7,
+    "name": "Lisa Davis",
+    "status": "online",
+    "currentCall": null,
+    "totalCalls": 43,
+    "avgHandleTime": 185,
+    "satisfaction": 96
+  },
+  {
+    "Id": 8,
+    "name": "Robert Wilson",
+    "status": "offline",
+    "currentCall": null,
+    "totalCalls": 35,
+    "avgHandleTime": 220,
+    "satisfaction": 85
+  },
+  {
+    "Id": 9,
+    "name": "Amanda Martinez",
+    "status": "online",
+    "currentCall": "CALL-2024-005",
+    "totalCalls": 49,
+    "avgHandleTime": 160,
+    "satisfaction": 97
+  },
+  {
+    "Id": 10,
+    "name": "Kevin Anderson",
+    "status": "busy",
+    "currentCall": "CALL-2024-006",
+    "totalCalls": 42,
+    "avgHandleTime": 190,
+    "satisfaction": 91
+  },
+  {
+    "Id": 11,
+    "name": "Rachel Thompson",
+    "status": "away",
+    "currentCall": null,
+    "totalCalls": 44,
+    "avgHandleTime": 200,
+    "satisfaction": 89
+  },
+  {
+    "Id": 12,
+    "name": "Chris Garcia",
+    "status": "online",
+    "currentCall": null,
+    "totalCalls": 46,
+    "avgHandleTime": 170,
+    "satisfaction": 93
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "agentId": "1",
+    "duration": 245,
+    "status": "completed",
+    "queue": "Support",
+    "timestamp": "2024-01-15T10:30:00Z",
+    "recording": "rec_2024_001.mp3"
+  },
+  {
+    "Id": 2,
+    "agentId": "2",
+    "duration": 180,
+    "status": "active",
+    "queue": "Sales",
+    "timestamp": "2024-01-15T10:45:00Z",
+    "recording": null
+  },
+  {
+    "Id": 3,
+    "agentId": "3",
+    "duration": 320,
+    "status": "completed",
+    "queue": "Technical",
+    "timestamp": "2024-01-15T11:00:00Z",
+    "recording": "rec_2024_003.mp3"
+  },
+  {
+    "Id": 4,
+    "agentId": "5",
+    "duration": 150,
+    "status": "active",
+    "queue": "Support",
+    "timestamp": "2024-01-15T11:15:00Z",
+    "recording": null
+  },
+  {
+    "Id": 5,
+    "agentId": "6",
+    "duration": 95,
+    "status": "active",
+    "queue": "Sales",
+    "timestamp": "2024-01-15T11:30:00Z",
+    "recording": null
+  },
+  {
+    "Id": 6,
+    "agentId": "9",
+    "duration": 280,
+    "status": "active",
+    "queue": "Technical",
+    "timestamp": "2024-01-15T11:45:00Z",
+    "recording": null
+  },
+  {
+    "Id": 7,
+    "agentId": "10",
+    "duration": 210,
+    "status": "active",
+    "queue": "Support",
+    "timestamp": "2024-01-15T12:00:00Z",
+    "recording": null
+  },
+  {
+    "Id": 8,
+    "agentId": "1",
+    "duration": 165,
+    "status": "completed",
+    "queue": "Sales",
+    "timestamp": "2024-01-15T09:30:00Z",
+    "recording": "rec_2024_008.mp3"
+  },
+  {
+    "Id": 9,
+    "agentId": "7",
+    "duration": 340,
+    "status": "completed",
+    "queue": "Technical",
+    "timestamp": "2024-01-15T09:00:00Z",
+    "recording": "rec_2024_009.mp3"
+  },
+  {
+    "Id": 10,
+    "agentId": "12",
+    "duration": 125,
+    "status": "completed",
+    "queue": "Support",
+    "timestamp": "2024-01-15T08:45:00Z",
+    "recording": "rec_2024_010.mp3"
+  }
+]

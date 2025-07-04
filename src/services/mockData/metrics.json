@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 1,
+    "type": "active_calls",
+    "value": 47,
+    "change": 12,
+    "period": "24h",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 2,
+    "type": "waiting_calls",
+    "value": 8,
+    "change": -5,
+    "period": "24h",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 3,
+    "type": "agents_online",
+    "value": 23,
+    "change": 3,
+    "period": "24h",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 4,
+    "type": "avg_wait_time",
+    "value": 2.3,
+    "change": -8,
+    "period": "24h",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 5,
+    "type": "total_calls",
+    "value": 1247,
+    "change": 15,
+    "period": "30d",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 6,
+    "type": "avg_handle_time",
+    "value": 3.2,
+    "change": -8,
+    "period": "30d",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 7,
+    "type": "first_call_resolution",
+    "value": 87,
+    "change": 5,
+    "period": "30d",
+    "timestamp": "2024-01-15T12:00:00Z"
+  },
+  {
+    "Id": 8,
+    "type": "customer_satisfaction",
+    "value": 4.7,
+    "change": 2,
+    "period": "30d",
+    "timestamp": "2024-01-15T12:00:00Z"
+  }
+]
