@@ -5,12 +5,50 @@ import SearchBar from '@/components/molecules/SearchBar';
 
 const Header = ({ onMenuToggle }) => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const notifications = [
     { id: 1, type: 'warning', message: 'Queue wait time above threshold', time: '2 min ago' },
     { id: 2, type: 'success', message: 'Agent Sarah Johnson back online', time: '5 min ago' },
     { id: 3, type: 'info', message: 'New call recording available', time: '10 min ago' }
   ];
+
+  const topMenuItems = [
+    {
+      label: 'Contact',
+      path: '/contact',
+      icon: 'Phone'
+    },
+    {
+      label: 'Report',
+      icon: 'BarChart3',
+      children: [
+        { path: '/call-logs', label: 'Call Logs', icon: 'Phone' },
+        { path: '/voice-otp-logs', label: 'Voice OTP Logs', icon: 'Shield' },
+        { path: '/app-call-logs', label: 'App Call Logs', icon: 'Smartphone' }
+      ]
+    },
+    {
+      label: 'User Management',
+      icon: 'Users',
+      children: [
+        { path: '/members', label: 'Members', icon: 'User' },
+        { path: '/call-groups', label: 'Call Groups', icon: 'Users' },
+        { path: '/member-analysis', label: 'Member Analysis', icon: 'BarChart3' }
+      ]
+    },
+    {
+      label: 'Admin',
+      icon: 'Shield',
+      children: [
+        { path: '/account', label: 'Account', icon: 'Settings' }
+      ]
+    }
+  ];
+
+  const toggleDropdown = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
+  };
 
   const getNotificationIcon = (type) => {
     switch (type) {
@@ -31,18 +69,65 @@ const Header = ({ onMenuToggle }) => {
   };
 
   return (
-    <header className="bg-surface border-b border-slate-700 px-6 py-4">
+    <header className="bg-surface border-b border-slate-700 px-4 py-3">
       <div className="flex items-center justify-between">
-        {/* Left Side - Mobile Menu & Search */}
-        <div className="flex items-center space-x-4 flex-1">
+        {/* Left Side - Mobile Menu & Top Navigation */}
+        <div className="flex items-center space-x-6 flex-1">
           <button
             onClick={onMenuToggle}
             className="lg:hidden text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800"
           >
-            <ApperIcon name="Menu" size={24} />
+            <ApperIcon name="Menu" size={20} />
           </button>
           
-          <div className="hidden md:block flex-1 max-w-md">
+          {/* Top Navigation Menu */}
+          <nav className="hidden md:flex items-center space-x-1">
+            {topMenuItems.map((item, index) => (
+              <div key={index} className="relative">
+                {item.children ? (
+                  <div>
+                    <button
+                      onClick={() => toggleDropdown(index)}
+                      className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                    >
+                      <ApperIcon name={item.icon} size={16} />
+                      <span>{item.label}</span>
+                      <ApperIcon name="ChevronDown" size={14} />
+                    </button>
+                    {activeDropdown === index && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="absolute top-full left-0 mt-1 w-48 bg-surface border border-slate-600 rounded-lg shadow-lg z-50"
+                      >
+                        {item.children.map((child, childIndex) => (
+                          <a
+                            key={childIndex}
+                            href={child.path}
+                            className="flex items-center space-x-2 px-3 py-2 text-sm text-slate-400 hover:text-white hover:bg-slate-800 first:rounded-t-lg last:rounded-b-lg transition-colors"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            <ApperIcon name={child.icon} size={14} />
+                            <span>{child.label}</span>
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    href={item.path}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                  >
+                    <ApperIcon name={item.icon} size={16} />
+                    <span>{item.label}</span>
+                  </a>
+                )}
+              </div>
+            ))}
+          </nav>
+          
+          <div className="hidden lg:block flex-1 max-w-md">
             <SearchBar 
               placeholder="Search agents, calls, queues..."
               onSearch={(term) => console.log('Search:', term)}
