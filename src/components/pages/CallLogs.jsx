@@ -138,187 +138,313 @@ const CallLogs = () => {
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={fetchCalls} />;
 
-  return (
+return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      {/* Header Section with Breadcrumb and Date Picker */}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Call Logs</h1>
-          <p className="text-gray-600 mt-1">View and manage all call records</p>
+          <nav className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+            <span>Home</span>
+            <ApperIcon name="ChevronRight" size={16} />
+            <span className="text-gray-900 font-medium">Call Logs</span>
+          </nav>
+          <h1 className="text-2xl font-bold text-gray-900">Call Log Dashboard</h1>
         </div>
-        <div className="flex items-center space-x-3 mt-4 sm:mt-0">
-          <Button
-            variant="outline"
-            onClick={handleRefresh}
-            className="flex items-center space-x-2"
-          >
-            <ApperIcon name="RefreshCw" size={16} />
-            <span>Refresh</span>
-          </Button>
-          <Button
-            variant="outline"
-            className="flex items-center space-x-2"
-          >
-            <ApperIcon name="Download" size={16} />
-            <span>Export</span>
-          </Button>
+        <div className="mt-4 lg:mt-0">
+          <div className="flex items-center space-x-2 bg-white border border-gray-300 rounded-lg px-4 py-2">
+            <ApperIcon name="Calendar" size={16} className="text-gray-400" />
+            <span className="text-sm text-gray-600">Jan 1, 2024 - Jan 31, 2024</span>
+            <ApperIcon name="ChevronDown" size={16} className="text-gray-400" />
+          </div>
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {/* Search */}
-          <div className="lg:col-span-2">
-            <div className="relative">
-              <ApperIcon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search by customer, phone, or agent..."
-                value={searchTerm}
-                onChange={handleSearch}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
+      {/* Tabs Navigation */}
+      <div className="bg-white border-b border-gray-200">
+        <nav className="flex space-x-8 px-6">
+          <button className="border-b-2 border-black py-4 px-1 text-sm font-medium text-black">
+            Call Report
+          </button>
+          <button className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Voice OTP
+          </button>
+          <button className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Auto Voice Broadcast
+          </button>
+          <button className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Auto Voice Survey
+          </button>
+          <button className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            App Call Log
+          </button>
+        </nav>
+      </div>
+
+      {/* Stats Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-9 gap-4">
+        {/* Live Call Card */}
+        <div className="xl:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-medium text-gray-600">Live Call</h3>
+            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+              <ApperIcon name="Headphones" size={20} className="text-green-600" />
             </div>
           </div>
+          <div className="flex items-center justify-between">
+            <div className="text-3xl font-bold text-gray-900">0</div>
+            <div className="w-16 h-16 relative">
+              <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 36 36">
+                <path
+                  d="M18 2.0845 A 15.9155 15.9155 0 0 1 18 33.9155 A 15.9155 15.9155 0 0 1 18 2.0845"
+                  fill="none"
+                  stroke="#E5E7EB"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M18 2.0845 A 15.9155 15.9155 0 0 1 18 33.9155 A 15.9155 15.9155 0 0 1 18 2.0845"
+                  fill="none"
+                  stroke="#10B981"
+                  strokeWidth="2"
+                  strokeDasharray="0, 100"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-xs font-medium text-gray-600">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          {/* Status Filter */}
-          <div>
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="all">All Status</option>
-              <option value="completed">Completed</option>
-              <option value="active">Active</option>
-              <option value="missed">Missed</option>
-              <option value="transferred">Transferred</option>
+        {/* Stats Cards */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Total Calls</h3>
+            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="Phone" size={16} className="text-blue-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">{calls.length}</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Answered</h3>
+            <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="PhoneCall" size={16} className="text-green-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">{calls.filter(c => c.status === 'completed').length}</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Not Answered</h3>
+            <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="PhoneMissed" size={16} className="text-red-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">{calls.filter(c => c.status === 'missed').length}</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Not Assigned</h3>
+            <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="UserX" size={16} className="text-orange-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">0</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Voicemail</h3>
+            <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="Voicemail" size={16} className="text-teal-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">0</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Welcome Sound</h3>
+            <div className="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="Volume2" size={16} className="text-pink-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">0</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Click to Call</h3>
+            <div className="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="MousePointer" size={16} className="text-yellow-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">0</div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-medium text-gray-600">Transferred</h3>
+            <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+              <ApperIcon name="PhoneForwarded" size={16} className="text-gray-600" />
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-gray-900">{calls.filter(c => c.status === 'transferred').length}</div>
+        </div>
+      </div>
+
+      {/* Filters and Actions */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        {/* Quick Filters */}
+        <div className="flex flex-wrap items-center gap-4 mb-6">
+          <div className="flex items-center space-x-2">
+            <button className="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-100">
+              Unique <span className="ml-1 bg-blue-200 text-blue-800 px-2 py-1 rounded-full text-xs">{calls.length}</span>
+            </button>
+            <button className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-100">
+              Today <span className="ml-1 bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-xs">0</span>
+            </button>
+            <button className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-100">
+              Yesterday <span className="ml-1 bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-xs">0</span>
+            </button>
+            <button className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-100">
+              This Week <span className="ml-1 bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-xs">{calls.length}</span>
+            </button>
+            <button className="px-4 py-2 bg-gray-50 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-100">
+              This Month <span className="ml-1 bg-gray-200 text-gray-800 px-2 py-1 rounded-full text-xs">{calls.length}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Filters and Actions Row */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-4">
+            <select className="px-4 py-2 border border-gray-300 rounded-lg text-sm">
+              <option>Desk Phone</option>
+              <option>All Phones</option>
+            </select>
+            <select className="px-4 py-2 border border-gray-300 rounded-lg text-sm">
+              <option>Deskphone</option>
+              <option>Mobile</option>
             </select>
           </div>
-
-          {/* Queue Filter */}
-          <div>
-            <select
-              value={queueFilter}
-              onChange={(e) => setQueueFilter(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="all">All Queues</option>
-              {uniqueQueues.map(queue => (
-                <option key={queue} value={queue}>{queue}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Direction Filter */}
-          <div>
-            <select
-              value={directionFilter}
-              onChange={(e) => setDirectionFilter(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="all">All Directions</option>
-              <option value="inbound">Inbound</option>
-              <option value="outbound">Outbound</option>
-            </select>
+          <div className="flex items-center space-x-3">
+            <div className="relative">
+              <ApperIcon name="Search" size={16} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search calls..."
+                value={searchTerm}
+                onChange={handleSearch}
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <button className="p-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+              <ApperIcon name="Download" size={16} />
+            </button>
+            <button className="p-2 bg-black text-white rounded-lg hover:bg-gray-800">
+              <ApperIcon name="Download" size={16} />
+            </button>
+            <button onClick={handleRefresh} className="p-2 bg-white border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50">
+              <ApperIcon name="RefreshCw" size={16} />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Results Summary */}
-      <div className="flex items-center justify-between text-sm text-gray-600">
-        <span>
-          Showing {filteredAndSortedCalls.length} of {calls.length} calls
-        </span>
-        <div className="flex items-center space-x-4">
-          <span>Sort by:</span>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-1 border border-gray-300 rounded text-sm"
-          >
-            <option value="timestamp">Date/Time</option>
-            <option value="duration">Duration</option>
-            <option value="customerName">Customer</option>
-            <option value="agentName">Agent</option>
-          </select>
-          <button
-            onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-            className="text-blue-600 hover:text-blue-800"
-          >
-            <ApperIcon name={sortOrder === 'asc' ? 'ArrowUp' : 'ArrowDown'} size={16} />
-          </button>
-        </div>
-      </div>
-
-      {/* Call Logs Table */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+{/* Call Log Table */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Call Details
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  S.NO
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Customer
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  DESKPHONE
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Agent
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  CALLER
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Duration
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  MEMBER
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  CALL GROUP
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Queue
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  DATE TIME
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  DURATION
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  STATUS
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  CALL STATUS
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  CIRCLE
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  KEY
+                </th>
+                <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  ACTION
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredAndSortedCalls.map((call) => (
+              {filteredAndSortedCalls.map((call, index) => (
                 <motion.tr
                   key={call.Id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   className="hover:bg-gray-50"
                 >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {index + 1}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {call.agentName}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2">
                       <div className={`${getDirectionColor(call.direction)}`}>
                         <ApperIcon name={getDirectionIcon(call.direction)} size={16} />
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-900">
-                          {format(new Date(call.timestamp), 'MMM dd, yyyy')}
+                          {formatPhoneNumber(call.customerPhone)}
                         </div>
                         <div className="text-sm text-gray-500">
-                          {format(new Date(call.timestamp), 'HH:mm:ss')}
+                          {call.customerName || 'Unknown'}
                         </div>
                       </div>
                     </div>
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {call.customerName || 'Unknown'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {call.queue}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">
-                        {call.customerName || 'Unknown'}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {formatPhoneNumber(call.customerPhone)}
-                      </div>
+                    <div className="text-sm text-gray-900">
+                      {format(new Date(call.timestamp), 'MMM dd, yyyy')}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {format(new Date(call.timestamp), 'HH:mm:ss')}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{call.agentName}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{formatDuration(call.duration)}</div>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {formatDuration(call.duration)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(call.status)}`}>
@@ -326,7 +452,15 @@ const CallLogs = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{call.queue}</div>
+                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(call.status)}`}>
+                      {call.status.charAt(0).toUpperCase() + call.status.slice(1)}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    Active
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    #{call.Id}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div className="flex items-center space-x-2">
@@ -359,6 +493,24 @@ const CallLogs = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Pagination Info */}
+        <div className="px-6 py-4 border-t border-gray-200 bg-gray-50">
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-gray-600">
+              Showing 1 to {filteredAndSortedCalls.length} of {calls.length} entries
+            </div>
+            <div className="flex items-center space-x-2">
+              <button className="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-100">
+                Previous
+              </button>
+              <span className="px-3 py-1 bg-blue-600 text-white rounded text-sm">1</span>
+              <button className="px-3 py-1 border border-gray-300 rounded text-sm hover:bg-gray-100">
+                Next
+              </button>
+            </div>
+          </div>
         </div>
 
         {filteredAndSortedCalls.length === 0 && (
