@@ -6,6 +6,7 @@ import Agents from '@/components/pages/Agents';
 import Analytics from '@/components/pages/Analytics';
 import Queues from '@/components/pages/Queues';
 import Settings from '@/components/pages/Settings';
+import CallLogs from '@/components/pages/CallLogs';
 
 function App() {
   return (
@@ -58,7 +59,7 @@ function App() {
             <Route path="/contact" element={<Agents />} />
             
             {/* Header Menu Routes - Report */}
-            <Route path="/call-logs" element={<Analytics />} />
+<Route path="/call-logs" element={<CallLogs />} />
             <Route path="/voice-otp-logs" element={<Analytics />} />
             <Route path="/app-call-logs" element={<Analytics />} />
             
@@ -87,7 +88,7 @@ function App() {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="dark"
+theme="light"
         />
       </div>
     </Router>

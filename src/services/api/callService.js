@@ -17,12 +17,12 @@ export const callService = {
     return { ...call };
   },
 
-  async create(callData) {
+async create(newCallData) {
     await delay(500);
     const maxId = Math.max(...callData.map(call => call.Id), 0);
     const newCall = {
       Id: maxId + 1,
-      ...callData,
+      ...newCallData,
       timestamp: new Date().toISOString()
     };
     callData.push(newCall);

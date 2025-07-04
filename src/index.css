@@ -15,8 +15,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0F172A;
-  color: #F8FAFC;
+  background-color: #F9FAFB;
+  color: #111827;
 }
 
 /* Toast Overrides */

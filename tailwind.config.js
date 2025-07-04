@@ -6,14 +6,14 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-primary: '#3B82F6',
-        secondary: '#1E293B',
+colors: {
+        primary: '#3B82F6',
+        secondary: '#F3F4F6',
         accent: '#10B981',
-        surface: '#1E293B',
-        background: '#0F172A',
-        'light-black': '#2D3748',
-        'light-black-hover': '#4A5568',
+        surface: '#FFFFFF',
+        background: '#F9FAFB',
+        'light-black': '#374151',
+        'light-black-hover': '#4B5563',
         success: '#10B981',
         warning: '#F59E0B',
         error: '#EF4444',

@@ -2,91 +2,151 @@
   {
     "Id": 1,
     "agentId": "1",
+    "agentName": "Sarah Johnson",
+    "customerPhone": "+1 (555) 123-4567",
+    "customerName": "John Smith",
     "duration": 245,
     "status": "completed",
     "queue": "Support",
+    "direction": "inbound",
     "timestamp": "2024-01-15T10:30:00Z",
-    "recording": "rec_2024_001.mp3"
+    "recording": "rec_2024_001.mp3",
+    "callType": "voice",
+    "tags": ["resolved", "customer-service"]
   },
   {
     "Id": 2,
     "agentId": "2",
+    "agentName": "Mike Chen",
+    "customerPhone": "+1 (555) 234-5678",
+    "customerName": "Jane Doe",
     "duration": 180,
     "status": "active",
     "queue": "Sales",
+    "direction": "outbound",
     "timestamp": "2024-01-15T10:45:00Z",
-    "recording": null
+    "recording": null,
+    "callType": "voice",
+    "tags": ["follow-up", "lead"]
   },
   {
     "Id": 3,
     "agentId": "3",
+    "agentName": "Alex Rodriguez",
+    "customerPhone": "+1 (555) 345-6789",
+    "customerName": "Bob Wilson",
     "duration": 320,
     "status": "completed",
     "queue": "Technical",
+    "direction": "inbound",
     "timestamp": "2024-01-15T11:00:00Z",
-    "recording": "rec_2024_003.mp3"
+    "recording": "rec_2024_003.mp3",
+    "callType": "voice",
+    "tags": ["technical-support", "escalated"]
   },
   {
     "Id": 4,
     "agentId": "5",
+    "agentName": "Emily Davis",
+    "customerPhone": "+1 (555) 456-7890",
+    "customerName": "Alice Brown",
     "duration": 150,
     "status": "active",
     "queue": "Support",
+    "direction": "inbound",
     "timestamp": "2024-01-15T11:15:00Z",
-    "recording": null
+    "recording": null,
+    "callType": "voice",
+    "tags": ["billing-inquiry"]
   },
   {
     "Id": 5,
     "agentId": "6",
+    "agentName": "David Kim",
+    "customerPhone": "+1 (555) 567-8901",
+    "customerName": "Charlie Green",
     "duration": 95,
     "status": "active",
     "queue": "Sales",
+    "direction": "outbound",
     "timestamp": "2024-01-15T11:30:00Z",
-    "recording": null
+    "recording": null,
+    "callType": "voice",
+    "tags": ["cold-call", "prospect"]
   },
   {
     "Id": 6,
     "agentId": "9",
+    "agentName": "Lisa Wang",
+    "customerPhone": "+1 (555) 678-9012",
+    "customerName": "Diana White",
     "duration": 280,
     "status": "active",
     "queue": "Technical",
+    "direction": "inbound",
     "timestamp": "2024-01-15T11:45:00Z",
-    "recording": null
+    "recording": null,
+    "callType": "voice",
+    "tags": ["troubleshooting", "urgent"]
   },
   {
     "Id": 7,
     "agentId": "10",
+    "agentName": "James Taylor",
+    "customerPhone": "+1 (555) 789-0123",
+    "customerName": "Frank Black",
     "duration": 210,
     "status": "active",
     "queue": "Support",
+    "direction": "inbound",
     "timestamp": "2024-01-15T12:00:00Z",
-    "recording": null
+    "recording": null,
+    "callType": "voice",
+    "tags": ["account-help"]
   },
   {
     "Id": 8,
     "agentId": "1",
+    "agentName": "Sarah Johnson",
+    "customerPhone": "+1 (555) 890-1234",
+    "customerName": "Grace Blue",
     "duration": 165,
     "status": "completed",
     "queue": "Sales",
+    "direction": "outbound",
     "timestamp": "2024-01-15T09:30:00Z",
-    "recording": "rec_2024_008.mp3"
+    "recording": "rec_2024_008.mp3",
+    "callType": "voice",
+    "tags": ["demo-scheduled", "qualified"]
   },
   {
     "Id": 9,
     "agentId": "7",
+    "agentName": "Tom Anderson",
+    "customerPhone": "+1 (555) 901-2345",
+    "customerName": "Henry Red",
     "duration": 340,
     "status": "completed",
     "queue": "Technical",
+    "direction": "inbound",
     "timestamp": "2024-01-15T09:00:00Z",
-    "recording": "rec_2024_009.mp3"
+    "recording": "rec_2024_009.mp3",
+    "callType": "voice",
+    "tags": ["complex-issue", "resolved"]
   },
   {
     "Id": 10,
     "agentId": "12",
+    "agentName": "Rebecca Lee",
+    "customerPhone": "+1 (555) 012-3456",
+    "customerName": "Ivan Yellow",
     "duration": 125,
     "status": "completed",
     "queue": "Support",
+    "direction": "inbound",
     "timestamp": "2024-01-15T08:45:00Z",
-    "recording": "rec_2024_010.mp3"
+    "recording": "rec_2024_010.mp3",
+    "callType": "voice",
+    "tags": ["quick-resolution"]
   }
 ]
